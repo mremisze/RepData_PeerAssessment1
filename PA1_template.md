@@ -8,7 +8,8 @@ output:
 
 ## Loading and preprocessing the data
 Set the Working Directory and Load Raw data
-```{r echo = TRUE}
+
+```r
 data <- read.csv("activity.csv")
 ```
 
@@ -16,18 +17,32 @@ data <- read.csv("activity.csv")
 
 Make a histogram of the total number of steps taken each day.
 
-```{r echo = TRUE}
+
+```r
 spd <- aggregate(steps ~ date, data, sum)
 hist(spd$steps)
 ```
 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
+
 Calculate and report the mean and median total number of steps taken per day.
 
 
-```{r echo = TRUE}
-mean(spd$steps)
 
+```r
+mean(spd$steps)
+```
+
+```
+## [1] 10766.19
+```
+
+```r
 median(spd$steps)
+```
+
+```
+## [1] 10765
 ```
 
 
@@ -36,15 +51,22 @@ median(spd$steps)
 
 Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).
 
-```{r echo = TRUE}
+
+```r
 ada <- aggregate(steps ~ interval, data, mean)
 plot(ada, type = "l")
-
 ```
 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
+
 Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?.
-```{r echo = TRUE}
+
+```r
 ada$interval[which.max(ada$steps)]
+```
+
+```
+## [1] 835
 ```
 
 ## Imputing missing values.
@@ -52,9 +74,13 @@ ada$interval[which.max(ada$steps)]
 
 Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
 
-```{r echo = TRUE}
-sum(is.na(data))
 
+```r
+sum(is.na(data))
+```
+
+```
+## [1] 2304
 ```
 
 
